@@ -37,6 +37,7 @@ public class Spawner : MonoBehaviour
     public void SpawnBox()
     {
         if (boxList == null) return;
+        if (boxList.Count > 5) return;
 
         boxList.Enqueue(Instantiate(box));
     }
