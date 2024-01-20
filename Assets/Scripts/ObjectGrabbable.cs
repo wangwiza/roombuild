@@ -15,8 +15,9 @@ public class ObjectGrabbable : MonoBehaviour
     {
         objectRigidbody = GetComponent<Rigidbody>();
     }
-    public void Grab(Transform objectGrabPointTransform)
-    {
+    
+    public void Grab(Transform objectGrabPointTransform) {
+        this.gameObject.tag = "Furniture";
         Physics.IgnoreCollision(objectGrabPointTransform.parent.GetComponent<Collider>(), GetComponent<Collider>());
         this.objectGrabPointTransform = objectGrabPointTransform;
         objectRigidbody.useGravity = false;
