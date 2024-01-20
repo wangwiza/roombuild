@@ -11,6 +11,17 @@ public class ObjectGrabbable : MonoBehaviour
     private bool isRotating;
     private Quaternion targetRotation;
 
+    [SerializeField] private Mesh[] allMeshes;
+    [SerializeField] private MeshFilter currentMesh;
+
+    private void Start()
+    {
+        int chosenMesh = Random.Range(0, allMeshes.Length);
+        Mesh tempMesh = allMeshes[chosenMesh];
+        currentMesh.mesh = tempMesh;
+        this.gameObject.transform.localScale = new Vector3(1,1,1);
+    }
+
     private void Awake()
     {
         objectRigidbody = GetComponent<Rigidbody>();
