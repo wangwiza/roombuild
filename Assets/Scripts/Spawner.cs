@@ -51,4 +51,9 @@ public class Spawner : MonoBehaviour
         Instantiate(item);
         isItemExist = true;
     }
+
+    public void PickUpSpawnedItem()
+    {
+        isItemExist = false;
+    }
 }
