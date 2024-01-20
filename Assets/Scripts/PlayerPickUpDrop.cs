@@ -8,6 +8,8 @@ public class PlayerPickUpDrop : MonoBehaviour
     private LayerMask pickUpLayerMask;
     [SerializeField]
     private Transform objectGrabPointTransform;
+    [SerializeField]
+    private float pickUpVerticalOffset;
     private CharacterController controller;
     private bool grabbing;
 
@@ -27,13 +29,15 @@ public class PlayerPickUpDrop : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Vector3 forward = transform.TransformDirection(Vector3.forward) * 2;
+        Debug.DrawRay(transform.position + new Vector3(0f, pickUpVerticalOffset, 0f), forward, Color.green);
         if (grabbing)
         {
             if (objectGrabbable == null)
             {
                 // not carrying, try to grab
                 float pickUpDistance = 2f;
-                if (Physics.Raycast(transform.position + new Vector3(0f, -0.5f, 0f), transform.forward, out RaycastHit raycastHit, pickUpDistance, pickUpLayerMask))
+                if (Physics.Raycast(transform.position + new Vector3(0f, pickUpVerticalOffset, 0f), transform.forward, out RaycastHit raycastHit, pickUpDistance, pickUpLayerMask))
                 {
                     if (raycastHit.transform.TryGetComponent(out objectGrabbable))
                     {
