@@ -8,10 +8,10 @@ public class BoxScript : MonoBehaviour
 
     private void Awake()
     {
-        StartCoroutine(removeObject());
+        StartCoroutine(RemoveObject());
     }
 
-    IEnumerator removeObject()
+    IEnumerator RemoveObject()
     {
         yield return new WaitForSeconds(boxLifeTime);
         Object.Destroy(this.gameObject);

@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    public GameObject mySphere;
+    public GameObject box;
+    public GameObject item;
+    public Queue<GameObject> boxList;
     float timePassed = 0f;
     int timeTrigger = 2;
     public int randomLowRange = 2;
@@ -12,7 +14,8 @@ public class Spawner : MonoBehaviour
 
     public void Start()
     {
-        SpawnSphere();
+        boxList = new Queue<GameObject>();
+        SpawnBox();
     }
 
     public void Update()
@@ -20,15 +23,24 @@ public class Spawner : MonoBehaviour
         timePassed += Time.deltaTime;
         if (timePassed > timeTrigger)
         {
-            SpawnSphere();
+            SpawnBox();
             Debug.Log("Time Trigger: " + timeTrigger);
             timePassed = 0f;
             timeTrigger = Random.Range(randomLowRange, randomHighRange);
         }
     }
 
-    public void SpawnSphere()
+    public void SpawnBox()
     {
-        Instantiate(mySphere);
+        if (boxList == null) return;
+
+        boxList.Enqueue(Instantiate(box));
+    }
+
+    public void ConvertBoxToItem()
+    {
+        GameObject temp = boxList.Dequeue();
+        Object.Destroy(temp);
+        Instantiate(item);
     }
 }
