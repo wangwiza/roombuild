@@ -4,6 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - Spawner
+  - Wall
+  - Item
   - Furniture
   layers:
   - Default

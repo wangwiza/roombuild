@@ -28,7 +28,6 @@ public class Spawner : MonoBehaviour
         if (timePassed > timeTrigger)
         {
             SpawnBox();
-            Debug.Log("Time Trigger: " + timeTrigger);
             timePassed = 0f;
             timeTrigger = Random.Range(randomLowRange, randomHighRange);
         }
@@ -44,11 +43,17 @@ public class Spawner : MonoBehaviour
 
     public void ConvertBoxToItem()
     {
-        Debug.Log(boxList.Count);
+        Debug.Log("CHECK");
         if (isItemExist || boxList.Count == 0) return;
+        Debug.Log("CONVERT");
         GameObject temp = boxList.Dequeue();
         Object.Destroy(temp);
         Instantiate(item);
         isItemExist = true;
+    }
+
+    public void PickUpSpawnedItem()
+    {
+        isItemExist = false;
     }
 }

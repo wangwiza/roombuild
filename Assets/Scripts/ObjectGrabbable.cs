@@ -10,7 +10,9 @@ public class ObjectGrabbable : MonoBehaviour
     private void Awake() {
         objectRigidbody = GetComponent<Rigidbody>();
     }
+
     public void Grab(Transform objectGrabPointTransform) {
+        this.gameObject.tag = "Furniture";
         this.objectGrabPointTransform = objectGrabPointTransform;
         objectRigidbody.useGravity = false;
         objectRigidbody.drag = 10f;
