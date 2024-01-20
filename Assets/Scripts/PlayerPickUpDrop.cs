@@ -17,13 +17,12 @@ public class PlayerPickUpDrop : MonoBehaviour
 
 
     private ObjectGrabbable objectGrabbable;
-    private Spawner spawner;
+
 
     // Start is called before the first frame update
     private void Start()
     {
         controller = gameObject.GetComponent<CharacterController>();
-        spawner = GameObject.FindGameObjectWithTag("Spawner").GetComponent<Spawner>();
     }
     public void OnGrab(InputAction.CallbackContext context)
     {
@@ -55,21 +54,11 @@ public class PlayerPickUpDrop : MonoBehaviour
             float pickUpDistance = 2f;
             if (Physics.Raycast(transform.position + new Vector3(0f, pickUpVerticalOffset, 0f), transform.forward, out RaycastHit raycastHit, pickUpDistance, pickUpLayerMask))
             {
-                if (raycastHit.collider.gameObject.tag == "Wall")
-                {
-                    // Debug.Log("WALL");
-                    spawner.ConvertBoxToItem();
-                }
                 if (raycastHit.transform.TryGetComponent(out objectGrabbable))
                 {
-                    if (raycastHit.collider.gameObject.tag == "Item")
-                    { 
-                        Debug.Log("NEW");
-                        spawner.PickUpSpawnedItem();
-                    }
-                    Debug.Log("GRAB");
                     objectGrabbable.Grab(objectGrabPointTransform);
                 }
+
             }
         }
         else

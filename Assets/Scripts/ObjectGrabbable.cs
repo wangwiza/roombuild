@@ -15,9 +15,8 @@ public class ObjectGrabbable : MonoBehaviour
     {
         objectRigidbody = GetComponent<Rigidbody>();
     }
-    
-    public void Grab(Transform objectGrabPointTransform) {
-        this.gameObject.tag = "Furniture";
+    public void Grab(Transform objectGrabPointTransform)
+    {
         Physics.IgnoreCollision(objectGrabPointTransform.parent.GetComponent<Collider>(), GetComponent<Collider>());
         this.objectGrabPointTransform = objectGrabPointTransform;
         objectRigidbody.useGravity = false;
@@ -51,6 +50,23 @@ public class ObjectGrabbable : MonoBehaviour
         if (objectGrabPointTransform != null)
         {
             Debug.Log("translation lerp");
+            if (isRotating)
+            {
+                Debug.Log("rotation lerp");
+
+                // Smoothly interpolate between the current rotation and the target rotation
+                transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
+
+                // Check if the rotation is almost complete
+                if (Quaternion.Angle(transform.rotation, targetRotation) < 0.01f)
+                {
+                    // Ensure the final rotation is exactly the target rotation
+                    transform.rotation = targetRotation;
+
+                    // Reset the flag
+                    isRotating = false;
+                }
+            }
             float lerpSpeed = 10f;
             Vector3 newPosition = Vector3.Lerp(transform.position, objectGrabPointTransform.position, Time.deltaTime * lerpSpeed);
             objectRigidbody.MovePosition(newPosition);
@@ -60,22 +76,22 @@ public class ObjectGrabbable : MonoBehaviour
 
     private void Update()
     {
-        if (isRotating)
-        {
-            Debug.Log("rotation lerp"); 
+        // if (isRotating)
+        // {
+        //     Debug.Log("rotation lerp"); 
 
-            // Smoothly interpolate between the current rotation and the target rotation
-            transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
+        //     // Smoothly interpolate between the current rotation and the target rotation
+        //     transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
 
-            // Check if the rotation is almost complete
-            if (Quaternion.Angle(transform.rotation, targetRotation) < 0.01f)
-            {
-                // Ensure the final rotation is exactly the target rotation
-                transform.rotation = targetRotation;
+        //     // Check if the rotation is almost complete
+        //     if (Quaternion.Angle(transform.rotation, targetRotation) < 0.01f)
+        //     {
+        //         // Ensure the final rotation is exactly the target rotation
+        //         transform.rotation = targetRotation;
 
-                // Reset the flag
-                isRotating = false;
-            }
-        }
+        //         // Reset the flag
+        //         isRotating = false;
+        //     }
+        // }
     }
 }
