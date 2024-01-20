@@ -6,11 +6,15 @@ public class Spawner : MonoBehaviour
 {
     public GameObject box;
     public GameObject item;
-    public Queue<GameObject> boxList;
+
+    Queue<GameObject> boxList;
+    bool isItemExist = false;
+
     float timePassed = 0f;
     int timeTrigger = 2;
     public int randomLowRange = 2;
     public int randomHighRange = 5;
+
 
     public void Start()
     {
@@ -39,8 +43,11 @@ public class Spawner : MonoBehaviour
 
     public void ConvertBoxToItem()
     {
+        Debug.Log(boxList.Count);
+        if (isItemExist || boxList.Count == 0) return;
         GameObject temp = boxList.Dequeue();
         Object.Destroy(temp);
         Instantiate(item);
+        isItemExist = true;
     }
 }
