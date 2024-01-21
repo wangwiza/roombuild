@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     private CharacterController controller;
     private Vector3 playerVelocity;
     private bool groundedPlayer;
+    private Animator animator;
 
     private Vector2 movementInput = Vector2.zero;
     const float ControlSnappiness = 15f;
@@ -20,13 +21,14 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         controller = gameObject.GetComponent<CharacterController>();
+        animator = gameObject.GetComponentInChildren<Animator>();
     }
 
     public void OnMove(InputAction.CallbackContext context)
     {
         movementInput = context.ReadValue<Vector2>();
-        Debug.Log(movementInput.magnitude);
-        if (movementInput.magnitude < 0.1) {
+        if (movementInput.magnitude < 0.1)
+        {
             movementInput = Vector2.zero;
         }
     }
@@ -45,12 +47,17 @@ public class PlayerController : MonoBehaviour
         if (move != Vector3.zero)
         {
             gameObject.transform.forward = move;
+            animator.SetBool("isWalking", true);
+
             if (!walkSource.isPlaying)
             {
                 walkSource.Play();
             }
-        } else {
+        }
+        else
+        {
             walkSource.Stop();
+            animator.SetBool("isWalking", false);
         }
 
         // Changes the height position of the player..

@@ -48,6 +48,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 4af1fe288828dbe43a85830b1fa48885, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -6478536213147159724, guid: b62443e9f131660418998a494b1a5cfb, type: 3}
+    - target: {fileID: -5754084199372789682, guid: 4af1fe288828dbe43a85830b1fa48885, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -5495902117074765545, guid: b62443e9f131660418998a494b1a5cfb, type: 3}
     - target: {fileID: 919132149155446097, guid: 4af1fe288828dbe43a85830b1fa48885, type: 3}
       propertyPath: m_Name
       value: Box

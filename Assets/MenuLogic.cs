@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
 
 public class MenuLogic : MonoBehaviour
@@ -12,6 +9,7 @@ public class MenuLogic : MonoBehaviour
 
     public void OpenMenu()
     {
+        Debug.Log("Open menu");
         isOpen = !isOpen;
         menuScreen.SetActive(isOpen);
         if (isOpen) {
