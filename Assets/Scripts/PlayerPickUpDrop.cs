@@ -37,7 +37,7 @@ public class PlayerPickUpDrop : MonoBehaviour
         Vector3 objectSize = objectGrabbable.GetSize();
         //furnitureSize = new Vector2Int(objectSize.x, y: (int)objectSize.z);
         Vector3 gridPosition = grid.WorldToCell(transform.position + transform.forward *2);
-        Debug.Log($"{gridPosition}");
+        //Debug.Log($"{gridPosition}");
         //basePosition = new Vector3Int((int)gridPosition.x, (int)gridPosition.z, (int)gridPosition.y);
 
         //idk where to put this
@@ -145,6 +145,22 @@ public class PlayerPickUpDrop : MonoBehaviour
                     }
                     Debug.Log("GRAB");
                     objectGrabbable.Grab(objectGrabPointTransform);
+                    database.RemoveObject(objectGrabbable.GetId());
+                    foreach (GridObject gridObject in database.gridObjects)
+                    {
+                        string positions = "";
+                        foreach (Vector3Int pos in gridObject.gridPositions)
+                        {
+                            positions += $"({pos.x}, {pos.y}, {pos.z}), ";
+                        }
+
+                        // Optionally trim the trailing comma and space
+                        if (positions.Length > 0)
+                        {
+                            positions = positions.Substring(0, positions.Length - 2);
+                        }
+                        Debug.Log($"Object ID: {gridObject.objectId}, Positions: {positions}");
+                    }
                 }
             }
         }
