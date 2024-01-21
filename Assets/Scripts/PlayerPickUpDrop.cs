@@ -24,16 +24,32 @@ public class PlayerPickUpDrop : MonoBehaviour
     {
         ClearHighlights();
 
-        if (objectGrabbable != null)
+        
+        Vector3 objectSize = objectGrabbable.GetSize();
+        Debug.Log($"{objectSize.x} {objectSize.y} {objectSize.z}");
+        Vector3 gridPosition = grid.WorldToCell(transform.position + transform.forward);
+        
+        for (int x = 0; x < Mathf.CeilToInt(objectSize.x); x++)
         {
-            Vector3Int gridPosition = grid.WorldToCell(transform.position);
-            Vector3Int newPos = new Vector3Int(gridPosition.x, gridPosition.z, gridPosition.y);
-            Vector3 frontPosition = grid.WorldToCell(transform.position + transform.forward);
-            Vector3 newDir = new Vector3(frontPosition.x, (float)0.3, frontPosition.y);
-            Debug.Log($"pos: {newPos}, dir: {newDir}");
-            GameObject highlight = Instantiate(highlightPrefab, newDir, Quaternion.identity);
-            currentHighlights.Add(highlight);
+            for (int z = 0; z < Mathf.CeilToInt(objectSize.z); z++)
+            {
+                Vector3 highlightGridPosition = new Vector3(gridPosition.x + x, (float)0.3, gridPosition.y + z);
+                GameObject highlight = Instantiate(highlightPrefab, highlightGridPosition, Quaternion.identity);
+                currentHighlights.Add(highlight);
+            }
         }
+        
+
+
+        //Vector3Int gridPosition = grid.WorldToCell(transform.position);
+        //Vector3Int newPos = new Vector3Int(gridPosition.x, gridPosition.z, gridPosition.y);
+        //Vector3 frontPosition = grid.WorldToCell(transform.position + transform.forward);
+        //Vector3 newDir = new Vector3(frontPosition.x, (float)0.3, frontPosition.y);
+        //Debug.Log($"pos: {newPos}, dir: {newDir}");
+        //GameObject highlight = Instantiate(highlightPrefab, newDir, Quaternion.identity);
+        //currentHighlights.Add(highlight);
+
+
     }
 
     private void ClearHighlights()
