@@ -22,10 +22,7 @@ public class PlayerPickUpDrop : MonoBehaviour
     [SerializeField] private Grid grid;
     private Vector3 lastHighlightPosition;
 
-    private GridData floorData;
     private Renderer previewRenderer;
-    private Vector3 furnitureSize;
-    private Vector3Int basePosition;
 
     [SerializeField] private GridManager database;
     private List<Vector3Int> positions = new();
@@ -42,8 +39,7 @@ public class PlayerPickUpDrop : MonoBehaviour
 
         //idk where to put this
         //ideally want to check the highlighted area
-        /*bool placementValidity = CheckPlacementValidity(gridPosition);
-        previewRenderer.material.color = placementValidity ? Color.white : Color.red;*/
+        //bool placementValidity = CheckPlacementValidity(gridPosition);
         
         for (int x = 0; x < Mathf.CeilToInt(objectSize.x); x++)
         {
@@ -52,6 +48,8 @@ public class PlayerPickUpDrop : MonoBehaviour
                 Vector3 highlightGridPosition = new Vector3(gridPosition.x + x, (float)0.3, gridPosition.y + z);
                 positions.Add(new Vector3Int((int)highlightGridPosition.x, (int)highlightGridPosition.y, (int)highlightGridPosition.z));
                 GameObject highlight = Instantiate(highlightPrefab, highlightGridPosition, Quaternion.identity);
+                previewRenderer = highlight.GetComponentInChildren<Renderer>();
+                previewRenderer.material.color = Color.white;
                 currentHighlights.Add(highlight);
                 lastHighlightPosition = highlightGridPosition;
             }
@@ -84,8 +82,6 @@ public class PlayerPickUpDrop : MonoBehaviour
     {
         controller = gameObject.GetComponent<CharacterController>();
         spawner = GameObject.FindGameObjectWithTag("Spawner").GetComponent<Spawner>();
-        floorData = new(); //will data be affected with 2 players?
-        previewRenderer = highlightPrefab.GetComponentInChildren<Renderer>();
     }
 
     private void Update()
