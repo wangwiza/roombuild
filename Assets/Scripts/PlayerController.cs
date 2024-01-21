@@ -50,7 +50,7 @@ public class PlayerController : MonoBehaviour
         if (move != Vector3.zero)
         {
             gameObject.transform.forward = move;
-            animator.SetBool("isWalking", true)
+            animator.SetBool("isWalking", true);
             if (!walkSource.isPlaying)
             {
                 walkSource.Play();
