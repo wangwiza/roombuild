@@ -492,7 +492,7 @@ GameObject:
   - component: {fileID: 4530041046048188290}
   - component: {fileID: 2636209524138808015}
   m_Layer: 0
-  m_Name: BearPlayer
+  m_Name: GoatedPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -593,7 +593,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
     m_ActionId: 25e0501c-8f5d-46e5-a59a-2979bf29bdde
-    m_ActionName: PlayerMovement/RotateLeft[/SwitchProControllerHID/leftTrigger,/XInputControllerWindows/leftTrigger]
+    m_ActionName: PlayerMovement/RotateLeft[/DualSenseGamepadHID/leftTrigger]
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 4530041046048188290}
@@ -609,7 +609,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
     m_ActionId: 97afbcb3-1103-448a-9a0e-3eda76c67cf2
-    m_ActionName: PlayerMovement/RotateRight[/SwitchProControllerHID/rightTrigger,/XInputControllerWindows/rightTrigger]
+    m_ActionName: PlayerMovement/RotateRight[/DualSenseGamepadHID/rightTrigger]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: PlayerMovement
@@ -669,9 +669,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pickUpLayerMask:
     serializedVersion: 2
-    m_Bits: 0
-  objectGrabPointTransform: {fileID: 0}
-  pickUpVerticalOffset: 0
+    m_Bits: 119
+  objectGrabPointTransform: {fileID: 3482662965384905870}
+  pickUpVerticalOffset: -1
 --- !u!136 &2636209524138808015
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -694,7 +694,7 @@ CapsuleCollider:
   m_Radius: 0.9977962
   m_Height: 1.9955924
   m_Direction: 1
-  m_Center: {x: 0.05171311, y: 0, z: 0}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6917220048586259107
 GameObject:
   m_ObjectHideFlags: 0
