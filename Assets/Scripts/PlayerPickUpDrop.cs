@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEditor.MemoryProfiler;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -13,11 +14,39 @@ public class PlayerPickUpDrop : MonoBehaviour
     private float pickUpVerticalOffset;
     private CharacterController controller;
     private bool grabbing;
-
-
-
     private ObjectGrabbable objectGrabbable;
     private Spawner spawner;
+    [SerializeField] private GameObject highlightPrefab;
+    private List<GameObject> currentHighlights = new();
+    [SerializeField] private Grid grid;
+
+    private void HighlightGrid()
+    {
+        ClearHighlights();
+
+        if (objectGrabbable != null)
+        {
+            Vector3Int gridPosition = grid.WorldToCell(transform.position);
+            Vector3Int newPos = new Vector3Int(gridPosition.x, gridPosition.z, gridPosition.y);
+            Vector3 frontPosition = grid.WorldToCell(transform.position + transform.forward);
+            Vector3 newDir = new Vector3(frontPosition.x, (float)0.3, frontPosition.y);
+            Debug.Log($"pos: {newPos}, dir: {newDir}");
+            GameObject highlight = Instantiate(highlightPrefab, newDir, Quaternion.identity);
+            currentHighlights.Add(highlight);
+        }
+    }
+
+    private void ClearHighlights()
+    {
+        foreach (GameObject highlight in currentHighlights)
+        {
+            Destroy(highlight);
+        }
+
+        currentHighlights.Clear();
+    }
+
+   
 
     // Start is called before the first frame update
     private void Start()
@@ -25,6 +54,19 @@ public class PlayerPickUpDrop : MonoBehaviour
         controller = gameObject.GetComponent<CharacterController>();
         spawner = GameObject.FindGameObjectWithTag("Spawner").GetComponent<Spawner>();
     }
+
+    private void Update()
+    {
+        if (objectGrabbable)
+        {
+            HighlightGrid();
+        } 
+        else
+        {
+            ClearHighlights();
+        }
+    }
+
     public void OnGrab(InputAction.CallbackContext context)
     {
         if (context.performed)
