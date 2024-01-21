@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEditor.MemoryProfiler;
 using UnityEngine;
@@ -21,14 +22,26 @@ public class PlayerPickUpDrop : MonoBehaviour
     [SerializeField] private Grid grid;
     private Vector3 lastHighlightPosition;
 
+    private GridData floorData;
+    private Renderer previewRenderer;
+    private Vector3 furnitureSize;
+    private Vector3 basePosition;
+
     private void HighlightGrid()
     {
         ClearHighlights();
 
         
         Vector3 objectSize = objectGrabbable.GetSize();
+        furnitureSize = objectSize;
         Debug.Log($"{objectSize.x} {objectSize.y} {objectSize.z}");
         Vector3 gridPosition = grid.WorldToCell(transform.position + transform.forward);
+        basePosition = gridPosition;
+
+        //idk where to put this
+        //ideally want to check the highlighted area
+        /*bool placementValidity = CheckPlacementValidity(gridPosition);
+        previewRenderer.material.color = placementValidity ? Color.white : Color.red;*/
         
         for (int x = 0; x < Mathf.CeilToInt(objectSize.x); x++)
         {
@@ -40,8 +53,6 @@ public class PlayerPickUpDrop : MonoBehaviour
                 lastHighlightPosition = highlightGridPosition;
             }
         }
-        
-
 
         //Vector3Int gridPosition = grid.WorldToCell(transform.position);
         //Vector3Int newPos = new Vector3Int(gridPosition.x, gridPosition.z, gridPosition.y);
@@ -50,7 +61,6 @@ public class PlayerPickUpDrop : MonoBehaviour
         //Debug.Log($"pos: {newPos}, dir: {newDir}");
         //GameObject highlight = Instantiate(highlightPrefab, newDir, Quaternion.identity);
         //currentHighlights.Add(highlight);
-
 
     }
 
@@ -65,12 +75,13 @@ public class PlayerPickUpDrop : MonoBehaviour
     }
 
    
-
     // Start is called before the first frame update
     private void Start()
     {
         controller = gameObject.GetComponent<CharacterController>();
         spawner = GameObject.FindGameObjectWithTag("Spawner").GetComponent<Spawner>();
+        floorData = new(); //will data be affected with 2 players?
+        previewRenderer = highlightPrefab.GetComponentInChildren<Renderer>();
     }
 
     private void Update()
@@ -79,10 +90,10 @@ public class PlayerPickUpDrop : MonoBehaviour
         {
             HighlightGrid();
         } 
-        else
-        {
-            ClearHighlights();
-        }
+        //else
+        //{
+        //    ClearHighlights();
+        //}
     }
 
     public void OnGrab(InputAction.CallbackContext context)
@@ -135,9 +146,18 @@ public class PlayerPickUpDrop : MonoBehaviour
         }
         else
         {
+            /*bool placementValidity = CheckPlacementValidity(lastHighlightPosition);
+            if (!placementValidity)
+                return;*/
             objectGrabbable.transform.position = lastHighlightPosition;
             objectGrabbable.Drop();
             objectGrabbable = null;
+            ClearHighlights();
         }
     }
+
+    /*private bool CheckPlacementValidity(Vector3 lastHighlightPosition)
+    {
+        return floorData.CanPlaceObjectAt(basePosition, furnitureSize);
+    }*/
 }
