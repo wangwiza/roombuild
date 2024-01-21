@@ -186,9 +186,4 @@ public class PlayerPickUpDrop : MonoBehaviour
             ClearHighlights();
         }
     }
-
-    /*private bool CheckPlacementValidity(Vector3 lastHighlightPosition)
-    {
-        return floorData.CanPlaceObjectAt(basePosition, furnitureSize);
-    }*/
 }
