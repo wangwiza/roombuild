@@ -63,13 +63,11 @@ public class ObjectGrabbable : MonoBehaviour
     {
         if (objectGrabPointTransform != null)
         {
-            Debug.Log("translation lerp");
+            float t = Time.deltaTime;
             if (isRotating)
             {
-                Debug.Log("rotation lerp");
-
                 // Smoothly interpolate between the current rotation and the target rotation
-                transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
+                transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, t * rotationSpeed);
 
                 // Check if the rotation is almost complete
                 if (Quaternion.Angle(transform.rotation, targetRotation) < 0.01f)
@@ -82,8 +80,7 @@ public class ObjectGrabbable : MonoBehaviour
                 }
             }
             float lerpSpeed = 10f;
-            Vector3 newPosition = Vector3.Lerp(transform.position, objectGrabPointTransform.position, Time.deltaTime * lerpSpeed);
-            objectRigidbody.MovePosition(newPosition);
+            transform.position = Vector3.Lerp(transform.position, objectGrabPointTransform.position, t * lerpSpeed);
         }
         
     }
