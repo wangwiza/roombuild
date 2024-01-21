@@ -30,6 +30,7 @@ public class ObjectGrabbable : MonoBehaviour
     public void Grab(Transform objectGrabPointTransform)
     {
         Physics.IgnoreCollision(objectGrabPointTransform.parent.GetComponent<Collider>(), GetComponent<Collider>());
+        this.rotationSpeed = 5f;
         this.objectGrabPointTransform = objectGrabPointTransform;
         objectRigidbody.useGravity = false;
         objectRigidbody.drag = 10f;
@@ -39,6 +40,7 @@ public class ObjectGrabbable : MonoBehaviour
     public void Drop()
     {
         Physics.IgnoreCollision(objectGrabPointTransform.parent.GetComponent<Collider>(), GetComponent<Collider>(), false);
+        this.rotationSpeed = 0f;
         this.objectGrabPointTransform = null;
         objectRigidbody.useGravity = true;
         objectRigidbody.drag = 0;

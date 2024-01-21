@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3862856100311689083}
   - component: {fileID: 488211150444138757}
   - component: {fileID: 905258989086450199}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Roundcube.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +92,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3482662965384905870}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: ObjectGrabPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -125,7 +125,7 @@ GameObject:
   - component: {fileID: 3563293615968873889}
   - component: {fileID: 1183050117980320450}
   - component: {fileID: 6525406150355273799}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: bearhead
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -206,7 +206,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7990444130768287854}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -239,7 +239,7 @@ GameObject:
   - component: {fileID: 1997331169625391590}
   - component: {fileID: 7549135838188853735}
   - component: {fileID: 1795215987982915815}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: shirt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -322,7 +322,7 @@ GameObject:
   - component: {fileID: 8421701092864634436}
   - component: {fileID: 1612727281490757566}
   - component: {fileID: 8585751458442797784}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: overalls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -405,7 +405,7 @@ GameObject:
   - component: {fileID: 4807222103902733604}
   - component: {fileID: 4527699208423005915}
   - component: {fileID: 29240167840627338}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Roundcube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -491,7 +491,7 @@ GameObject:
   - component: {fileID: 7631736017233355076}
   - component: {fileID: 4530041046048188290}
   - component: {fileID: 2636209524138808015}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: GoatedPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -671,7 +671,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 119
   objectGrabPointTransform: {fileID: 3482662965384905870}
-  pickUpVerticalOffset: -1
+  pickUpVerticalOffset: 0
 --- !u!136 &2636209524138808015
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -706,7 +706,7 @@ GameObject:
   - component: {fileID: 1738519340639863826}
   - component: {fileID: 4403827019629054197}
   - component: {fileID: 2182898930035997709}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
