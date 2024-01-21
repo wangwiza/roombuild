@@ -671,7 +671,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 119
   objectGrabPointTransform: {fileID: 3482662965384905870}
-  pickUpVerticalOffset: 0
+  pickUpVerticalOffset: -1.25
 --- !u!136 &2636209524138808015
 CapsuleCollider:
   m_ObjectHideFlags: 0
