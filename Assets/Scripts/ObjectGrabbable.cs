@@ -16,6 +16,7 @@ public class ObjectGrabbable : MonoBehaviour
 
     private void Start()
     {
+        
         int chosenMesh = Random.Range(0, allMeshes.Length);
         Mesh tempMesh = allMeshes[chosenMesh];
         currentMesh.mesh = tempMesh;
@@ -34,7 +35,8 @@ public class ObjectGrabbable : MonoBehaviour
         this.objectGrabPointTransform = objectGrabPointTransform;
         objectRigidbody.useGravity = false;
         objectRigidbody.drag = 10f;
-        objectRigidbody.isKinematic = true;
+        objectRigidbody.freezeRotation = true;
+        // objectRigidbody.isKinematic = true;
     }
 
     public void Drop()
@@ -44,7 +46,8 @@ public class ObjectGrabbable : MonoBehaviour
         this.objectGrabPointTransform = null;
         objectRigidbody.useGravity = true;
         objectRigidbody.drag = 0;
-        objectRigidbody.isKinematic = false;
+        objectRigidbody.freezeRotation = false;
+        // objectRigidbody.isKinematic = false;
     }
 
     public void Rotate(float angle)

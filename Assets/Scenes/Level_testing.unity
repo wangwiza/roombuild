@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -384,7 +384,7 @@ MonoBehaviour:
       m_SingletonActionBindings: []
       m_Flags: 0
     m_Reference: {fileID: 0}
-  m_PlayerPrefab: {fileID: 0}
+  m_PlayerPrefab: {fileID: 6084378804244115350, guid: 4bba4d546a79b3446815118d76c7d838, type: 3}
   m_SplitScreen: 0
   m_MaintainAspectRatioInSplitScreen: 0
   m_FixedNumberOfSplitScreens: -1
@@ -2074,87 +2074,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2037684489}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1001 &2056456560
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 3567267999273858975, guid: bdc2e6e31d29ac84091c4900507a5cdc, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5126857360524914850, guid: bdc2e6e31d29ac84091c4900507a5cdc, type: 3}
-      propertyPath: m_ActionEvents.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 5126857360524914850, guid: bdc2e6e31d29ac84091c4900507a5cdc, type: 3}
-      propertyPath: m_ActionEvents.Array.data[2].m_ActionId
-      value: 25e0501c-8f5d-46e5-a59a-2979bf29bdde
-      objectReference: {fileID: 0}
-    - target: {fileID: 5126857360524914850, guid: bdc2e6e31d29ac84091c4900507a5cdc, type: 3}
-      propertyPath: m_ActionEvents.Array.data[3].m_ActionId
-      value: 97afbcb3-1103-448a-9a0e-3eda76c67cf2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5126857360524914850, guid: bdc2e6e31d29ac84091c4900507a5cdc, type: 3}
-      propertyPath: m_ActionEvents.Array.data[2].m_ActionName
-      value: PlayerMovement/RotateLeft[/DualSenseGamepadHID/leftTrigger]
-      objectReference: {fileID: 0}
-    - target: {fileID: 5126857360524914850, guid: bdc2e6e31d29ac84091c4900507a5cdc, type: 3}
-      propertyPath: m_ActionEvents.Array.data[3].m_ActionName
-      value: PlayerMovement/RotateRight[/DualSenseGamepadHID/rightTrigger]
-      objectReference: {fileID: 0}
-    - target: {fileID: 6616997855027958997, guid: bdc2e6e31d29ac84091c4900507a5cdc, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -3.724144
-      objectReference: {fileID: 0}
-    - target: {fileID: 6616997855027958997, guid: bdc2e6e31d29ac84091c4900507a5cdc, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.97
-      objectReference: {fileID: 0}
-    - target: {fileID: 6616997855027958997, guid: bdc2e6e31d29ac84091c4900507a5cdc, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -4.62
-      objectReference: {fileID: 0}
-    - target: {fileID: 6616997855027958997, guid: bdc2e6e31d29ac84091c4900507a5cdc, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6616997855027958997, guid: bdc2e6e31d29ac84091c4900507a5cdc, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6616997855027958997, guid: bdc2e6e31d29ac84091c4900507a5cdc, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6616997855027958997, guid: bdc2e6e31d29ac84091c4900507a5cdc, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6616997855027958997, guid: bdc2e6e31d29ac84091c4900507a5cdc, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6616997855027958997, guid: bdc2e6e31d29ac84091c4900507a5cdc, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6616997855027958997, guid: bdc2e6e31d29ac84091c4900507a5cdc, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8080128649052306262, guid: bdc2e6e31d29ac84091c4900507a5cdc, type: 3}
-      propertyPath: m_Name
-      value: BearPlayer
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: bdc2e6e31d29ac84091c4900507a5cdc, type: 3}
 --- !u!1 &2072528494
 GameObject:
   m_ObjectHideFlags: 0
@@ -2272,6 +2191,5 @@ SceneRoots:
   - {fileID: 427479820}
   - {fileID: 1897725889}
   - {fileID: 910085569}
-  - {fileID: 2056456560}
   - {fileID: 1234557369}
   - {fileID: 203115535}

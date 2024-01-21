@@ -77,4 +77,10 @@ public class PlayerPickUpDrop : MonoBehaviour
             objectGrabbable = null;
         }
     }
+    // for debug purposes
+    private void Update() {
+        Debug.Log(transform.position);
+        Vector3 forward = transform.TransformDirection(Vector3.forward) * 1f;
+        Debug.DrawRay(transform.position + new Vector3(0f, pickUpVerticalOffset, 0f), forward, Color.green);
+    }
 }
