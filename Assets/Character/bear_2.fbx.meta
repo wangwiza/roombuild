@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d5993da231ac4404a97df0118f4d66ea
+guid: 5ee5d2c3bf39c4a648dc2d09bc858591
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -149,7 +149,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: hold_idle
+      name: wbox_idle
       takeName: metarig|metarigAction.001
       internalID: 653114312434093796
       firstFrame: 320

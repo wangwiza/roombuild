@@ -16,6 +16,7 @@ public class ObjectGrabbable : MonoBehaviour
 
     private void Start()
     {
+        
         int chosenMesh = Random.Range(0, allMeshes.Length);
         Mesh tempMesh = allMeshes[chosenMesh];
         currentMesh.mesh = tempMesh;
@@ -34,7 +35,8 @@ public class ObjectGrabbable : MonoBehaviour
         this.objectGrabPointTransform = objectGrabPointTransform;
         objectRigidbody.useGravity = false;
         objectRigidbody.drag = 10f;
-        objectRigidbody.isKinematic = true;
+        objectRigidbody.freezeRotation = true;
+        // objectRigidbody.isKinematic = true;
     }
 
     public Vector3 GetSize()
@@ -55,8 +57,7 @@ public class ObjectGrabbable : MonoBehaviour
         this.objectGrabPointTransform = null;
         objectRigidbody.useGravity = true;
         objectRigidbody.drag = 0;
-        objectRigidbody.isKinematic = false;
-        
+        objectRigidbody.freezeRotation = false;
     }
 
     public void Rotate(float angle)
@@ -75,11 +76,11 @@ public class ObjectGrabbable : MonoBehaviour
     {
         if (objectGrabPointTransform != null)
         {
+            float t = Time.deltaTime;
             if (isRotating)
             {
-
                 // Smoothly interpolate between the current rotation and the target rotation
-                transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
+                transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, t * rotationSpeed);
 
                 // Check if the rotation is almost complete
                 if (Quaternion.Angle(transform.rotation, targetRotation) < 0.01f)
@@ -92,8 +93,7 @@ public class ObjectGrabbable : MonoBehaviour
                 }
             }
             float lerpSpeed = 10f;
-            Vector3 newPosition = Vector3.Lerp(transform.position, objectGrabPointTransform.position, Time.deltaTime * lerpSpeed);
-            objectRigidbody.MovePosition(newPosition);
+            transform.position = Vector3.Lerp(transform.position, objectGrabPointTransform.position, t * lerpSpeed);
         }
         
     }

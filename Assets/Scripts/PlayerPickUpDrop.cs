@@ -127,10 +127,9 @@ public class PlayerPickUpDrop : MonoBehaviour
         if (objectGrabbable == null)
         {
             // not carrying, try to grab
-            float pickUpDistance = 2f;
-            if (Physics.SphereCast(transform.position + new Vector3(-1f, pickUpVerticalOffset, 0f), 1f, transform.forward, out RaycastHit raycastHit, pickUpDistance, pickUpLayerMask))
+            float pickUpDistance = 1f;
+            if (Physics.Raycast(transform.position + new Vector3(0f, pickUpVerticalOffset, 0f), transform.forward, out RaycastHit raycastHit, pickUpDistance, pickUpLayerMask))
             {
-                Debug.Log(raycastHit.transform);
                 if (raycastHit.collider.gameObject.tag == "Wall")
                 {
                     // Debug.Log("WALL");
