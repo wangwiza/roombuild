@@ -674,6 +674,7 @@ MonoBehaviour:
   pickUpVerticalOffset: 0
   highlightPrefab: {fileID: 3706936160302216349, guid: 0ba434ef38876214dad63e284d74900e, type: 3}
   grid: {fileID: 7090076851936237290, guid: d03a1c7c82e21d44eb3c2192f037c936, type: 3}
+  database: {fileID: 3532547755455004163, guid: ae07720dfa4ff754b81c37a8b24bf197, type: 3}
 --- !u!136 &2636209524138808015
 CapsuleCollider:
   m_ObjectHideFlags: 0

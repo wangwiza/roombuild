@@ -43,6 +43,11 @@ public class ObjectGrabbable : MonoBehaviour
 
     }
 
+    public int GetId()
+    {
+        return GetInstanceID();
+    }
+
     public void Drop()
     {
         Physics.IgnoreCollision(objectGrabPointTransform.parent.GetComponent<Collider>(), GetComponent<Collider>(), false);

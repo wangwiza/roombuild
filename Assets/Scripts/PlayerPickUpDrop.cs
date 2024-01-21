@@ -25,18 +25,20 @@ public class PlayerPickUpDrop : MonoBehaviour
     private GridData floorData;
     private Renderer previewRenderer;
     private Vector3 furnitureSize;
-    private Vector3 basePosition;
+    private Vector3Int basePosition;
+
+    [SerializeField] private GridManager database;
+    private List<Vector3Int> positions = new();
 
     private void HighlightGrid()
     {
         ClearHighlights();
-
         
         Vector3 objectSize = objectGrabbable.GetSize();
-        furnitureSize = objectSize;
-        Debug.Log($"{objectSize.x} {objectSize.y} {objectSize.z}");
-        Vector3 gridPosition = grid.WorldToCell(transform.position + transform.forward);
-        basePosition = gridPosition;
+        //furnitureSize = new Vector2Int(objectSize.x, y: (int)objectSize.z);
+        Vector3 gridPosition = grid.WorldToCell(transform.position + transform.forward *2);
+        Debug.Log($"{gridPosition}");
+        //basePosition = new Vector3Int((int)gridPosition.x, (int)gridPosition.z, (int)gridPosition.y);
 
         //idk where to put this
         //ideally want to check the highlighted area
@@ -48,6 +50,7 @@ public class PlayerPickUpDrop : MonoBehaviour
             for (int z = 0; z < Mathf.CeilToInt(objectSize.z); z++)
             {
                 Vector3 highlightGridPosition = new Vector3(gridPosition.x + x, (float)0.3, gridPosition.y + z);
+                positions.Add(new Vector3Int((int)highlightGridPosition.x, (int)highlightGridPosition.y, (int)highlightGridPosition.z));
                 GameObject highlight = Instantiate(highlightPrefab, highlightGridPosition, Quaternion.identity);
                 currentHighlights.Add(highlight);
                 lastHighlightPosition = highlightGridPosition;
@@ -72,6 +75,7 @@ public class PlayerPickUpDrop : MonoBehaviour
         }
 
         currentHighlights.Clear();
+        positions.Clear();
     }
 
    
@@ -150,6 +154,22 @@ public class PlayerPickUpDrop : MonoBehaviour
             if (!placementValidity)
                 return;*/
             objectGrabbable.transform.position = lastHighlightPosition;
+            database.AddOrUpdateObject(objectGrabbable.GetId(), positions);
+            foreach (GridObject gridObject in database.gridObjects)
+            {
+                string positions = "";
+                foreach (Vector3Int pos in gridObject.gridPositions)
+                {
+                    positions += $"({pos.x}, {pos.y}, {pos.z}), ";
+                }
+
+                // Optionally trim the trailing comma and space
+                if (positions.Length > 0)
+                {
+                    positions = positions.Substring(0, positions.Length - 2);
+                }
+                Debug.Log($"Object ID: {gridObject.objectId}, Positions: {positions}");
+            }
             objectGrabbable.Drop();
             objectGrabbable = null;
             ClearHighlights();
