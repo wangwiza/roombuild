@@ -10,16 +10,20 @@ public class PlayerController : MonoBehaviour
     private float gravityValue = -9.81f;
     [SerializeField]
     private AudioSource walkSource;
+    public Animator animator;
+
     private CharacterController controller;
     private Vector3 playerVelocity;
     private bool groundedPlayer;
+
 
     private Vector2 movementInput = Vector2.zero;
     const float ControlSnappiness = 15f;
 
     private void Start()
-    {
+    {   
         controller = gameObject.GetComponent<CharacterController>();
+        animator = gameObject.GetComponentInChildren<Animator>();
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -33,6 +37,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        Debug.Log(animator.GetBool("isWalking"));
         groundedPlayer = controller.isGrounded;
         if (groundedPlayer && playerVelocity.y < 0)
         {
@@ -45,12 +50,14 @@ public class PlayerController : MonoBehaviour
         if (move != Vector3.zero)
         {
             gameObject.transform.forward = move;
+            animator.SetBool("isWalking", true)
             if (!walkSource.isPlaying)
             {
                 walkSource.Play();
             }
         } else {
             walkSource.Stop();
+            animator.SetBool("isWalking", false);
         }
 
         // Changes the height position of the player..

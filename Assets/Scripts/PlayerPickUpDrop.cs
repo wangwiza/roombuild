@@ -22,6 +22,10 @@ public class PlayerPickUpDrop : MonoBehaviour
     [SerializeField] private Grid grid;
     private Vector3 lastHighlightPosition;
 
+    [SerializeField]
+    public Animator animator;
+
+    private GridData floorData;
     private Renderer previewRenderer;
 
     [SerializeField] private GridManager database;
@@ -82,6 +86,9 @@ public class PlayerPickUpDrop : MonoBehaviour
     {
         controller = gameObject.GetComponent<CharacterController>();
         spawner = GameObject.FindGameObjectWithTag("Spawner").GetComponent<Spawner>();
+        floorData = new(); //will data be affected with 2 players?
+        previewRenderer = highlightPrefab.GetComponentInChildren<Renderer>();
+        animator = gameObject.GetComponentInChildren<Animator>();
     }
 
     private void Update()
@@ -139,6 +146,7 @@ public class PlayerPickUpDrop : MonoBehaviour
                         spawner.PickUpSpawnedItem();
                     }
                     Debug.Log("GRAB");
+                    animator.SetBool("isHolding", true);
                     objectGrabbable.Grab(objectGrabPointTransform);
                     database.RemoveObject(objectGrabbable.GetId());
                     foreach (GridObject gridObject in database.gridObjects)
@@ -164,6 +172,8 @@ public class PlayerPickUpDrop : MonoBehaviour
             /*bool placementValidity = CheckPlacementValidity(lastHighlightPosition);
             if (!placementValidity)
                 return;*/
+            animator.SetBool("isHolding", false);
+
             objectGrabbable.transform.position = lastHighlightPosition;
             database.AddOrUpdateObject(objectGrabbable.GetId(), positions);
             foreach (GridObject gridObject in database.gridObjects)

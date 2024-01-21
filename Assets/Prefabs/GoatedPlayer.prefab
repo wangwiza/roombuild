@@ -216,7 +216,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerSpeed: 5
   gravityValue: -9.81
+<<<<<<< HEAD
   walkSource: {fileID: 1175189817473924028}
+=======
+  animator: {fileID: 8603927293580557967}
+>>>>>>> 8d9f65b (anims)
 --- !u!114 &4530041046048188290
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -436,7 +440,7 @@ Animator:
   m_GameObject: {fileID: 4352292830287778412}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: fba8021d21884476f9d2ee3f927203fd, type: 2}
+  m_Controller: {fileID: 9100000, guid: a8b8e59bacbae429b9d7e9016c10e471, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
