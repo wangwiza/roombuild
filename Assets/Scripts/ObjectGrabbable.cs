@@ -42,6 +42,17 @@ public class ObjectGrabbable : MonoBehaviour
         // objectRigidbody.isKinematic = true;
     }
 
+    public Vector3 GetSize()
+    {
+        return GetComponent<Collider>().bounds.size;
+
+    }
+
+    public int GetId()
+    {
+        return GetInstanceID();
+    }
+
     public void Drop()
     {
         dropSource.Play();
@@ -51,7 +62,6 @@ public class ObjectGrabbable : MonoBehaviour
         objectRigidbody.useGravity = true;
         objectRigidbody.drag = 0;
         objectRigidbody.freezeRotation = false;
-        // objectRigidbody.isKinematic = false;
     }
 
     public void Rotate(float angle)
