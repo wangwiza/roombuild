@@ -33,7 +33,7 @@ public class ObjectGrabbable : MonoBehaviour
         this.objectGrabPointTransform = objectGrabPointTransform;
         objectRigidbody.useGravity = false;
         objectRigidbody.drag = 10f;
-        objectRigidbody.isKinematic = true;
+        // objectRigidbody.isKinematic = true;
     }
 
     public void Drop()
@@ -42,7 +42,7 @@ public class ObjectGrabbable : MonoBehaviour
         this.objectGrabPointTransform = null;
         objectRigidbody.useGravity = true;
         objectRigidbody.drag = 0;
-        objectRigidbody.isKinematic = false;
+        // objectRigidbody.isKinematic = false;
     }
 
     public void Rotate(float angle)
