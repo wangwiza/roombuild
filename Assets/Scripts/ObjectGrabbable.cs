@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ObjectGrabbable : MonoBehaviour
@@ -13,6 +11,10 @@ public class ObjectGrabbable : MonoBehaviour
 
     [SerializeField] private Mesh[] allMeshes;
     [SerializeField] private MeshFilter currentMesh;
+    [SerializeField] private AudioSource pickUpSource;
+    [SerializeField] private AudioSource dropSource;
+    [SerializeField] private AudioSource rotateSource;
+    
 
     private void Start()
     {
@@ -30,6 +32,7 @@ public class ObjectGrabbable : MonoBehaviour
     }
     public void Grab(Transform objectGrabPointTransform)
     {
+        pickUpSource.Play();
         Physics.IgnoreCollision(objectGrabPointTransform.parent.GetComponent<Collider>(), GetComponent<Collider>());
         this.rotationSpeed = 5f;
         this.objectGrabPointTransform = objectGrabPointTransform;
@@ -41,6 +44,7 @@ public class ObjectGrabbable : MonoBehaviour
 
     public void Drop()
     {
+        dropSource.Play();
         Physics.IgnoreCollision(objectGrabPointTransform.parent.GetComponent<Collider>(), GetComponent<Collider>(), false);
         this.rotationSpeed = 0f;
         this.objectGrabPointTransform = null;
@@ -54,6 +58,7 @@ public class ObjectGrabbable : MonoBehaviour
     {
         if (!isRotating)
         {
+            rotateSource.Play();
             // Calculate the target rotation (90 degrees clockwise)
             targetRotation = transform.rotation * Quaternion.Euler(0f, angle, 0f);
 
@@ -90,22 +95,6 @@ public class ObjectGrabbable : MonoBehaviour
 
     private void Update()
     {
-        // if (isRotating)
-        // {
-        //     Debug.Log("rotation lerp"); 
 
-        //     // Smoothly interpolate between the current rotation and the target rotation
-        //     transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
-
-        //     // Check if the rotation is almost complete
-        //     if (Quaternion.Angle(transform.rotation, targetRotation) < 0.01f)
-        //     {
-        //         // Ensure the final rotation is exactly the target rotation
-        //         transform.rotation = targetRotation;
-
-        //         // Reset the flag
-        //         isRotating = false;
-        //     }
-        // }
     }
 }
