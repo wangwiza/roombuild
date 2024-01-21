@@ -29,21 +29,21 @@ public class PlayerPickUpDrop : MonoBehaviour
 
     [SerializeField] private GridManager database;
     private List<Vector3Int> positions = new();
-    private Animator animator;
 
     private void HighlightGrid()
     {
         ClearHighlights();
-
+        
         Vector3 objectSize = objectGrabbable.GetSize();
         //furnitureSize = new Vector2Int(objectSize.x, y: (int)objectSize.z);
-        Vector3 gridPosition = grid.WorldToCell(transform.position + transform.forward * 2);
+        Vector3 gridPosition = grid.WorldToCell(transform.position + transform.forward *2);
+        //Debug.Log($"{gridPosition}");
         //basePosition = new Vector3Int((int)gridPosition.x, (int)gridPosition.z, (int)gridPosition.y);
 
         //idk where to put this
         //ideally want to check the highlighted area
         //bool placementValidity = CheckPlacementValidity(gridPosition);
-
+        
         for (int x = 0; x < Mathf.CeilToInt(objectSize.x); x++)
         {
             for (int z = 0; z < Mathf.CeilToInt(objectSize.z); z++)
@@ -79,12 +79,14 @@ public class PlayerPickUpDrop : MonoBehaviour
         positions.Clear();
     }
 
-
+   
     // Start is called before the first frame update
     private void Start()
     {
         controller = gameObject.GetComponent<CharacterController>();
         spawner = GameObject.FindGameObjectWithTag("Spawner").GetComponent<Spawner>();
+        floorData = new(); //will data be affected with 2 players?
+        previewRenderer = highlightPrefab.GetComponentInChildren<Renderer>();
         animator = gameObject.GetComponentInChildren<Animator>();
     }
 
@@ -93,7 +95,7 @@ public class PlayerPickUpDrop : MonoBehaviour
         if (objectGrabbable)
         {
             HighlightGrid();
-        }
+        } 
         //else
         //{
         //    ClearHighlights();
@@ -110,23 +112,20 @@ public class PlayerPickUpDrop : MonoBehaviour
 
     public void OnLeftRotate(InputAction.CallbackContext context)
     {
-        if (context.performed && objectGrabbable != null)
-        {
+        if (context.performed && objectGrabbable != null) {
             objectGrabbable.Rotate(-90f);
         }
     }
-
+    
     public void OnRightRotate(InputAction.CallbackContext context)
     {
-        if (context.performed && objectGrabbable != null)
-        {
+        if (context.performed && objectGrabbable != null) {
             objectGrabbable.Rotate(90f);
         }
     }
+    
 
-
-    private void tryGrab()
-    {
+    private void tryGrab() {
         if (objectGrabbable == null)
         {
             // not carrying, try to grab
@@ -141,7 +140,7 @@ public class PlayerPickUpDrop : MonoBehaviour
                 if (raycastHit.transform.TryGetComponent(out objectGrabbable))
                 {
                     if (raycastHit.collider.gameObject.tag == "Item")
-                    {
+                    { 
                         Debug.Log("NEW");
                         spawner.PickUpSpawnedItem();
                     }
@@ -192,8 +191,6 @@ public class PlayerPickUpDrop : MonoBehaviour
                 Debug.Log($"Object ID: {gridObject.objectId}, Positions: {positions}");
             }
             objectGrabbable.Drop();
-            Debug.Log("DROPPING");
-            animator.SetBool("isHolding", false);
             objectGrabbable = null;
             ClearHighlights();
         }
