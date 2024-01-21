@@ -51,6 +51,7 @@ public class ObjectGrabbable : MonoBehaviour
         objectRigidbody.useGravity = true;
         objectRigidbody.drag = 0;
         objectRigidbody.isKinematic = false;
+        
     }
 
     public void Rotate(float angle)

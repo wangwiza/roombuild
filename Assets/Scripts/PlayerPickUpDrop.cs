@@ -19,6 +19,7 @@ public class PlayerPickUpDrop : MonoBehaviour
     [SerializeField] private GameObject highlightPrefab;
     private List<GameObject> currentHighlights = new();
     [SerializeField] private Grid grid;
+    private Vector3 lastHighlightPosition;
 
     private void HighlightGrid()
     {
@@ -36,6 +37,7 @@ public class PlayerPickUpDrop : MonoBehaviour
                 Vector3 highlightGridPosition = new Vector3(gridPosition.x + x, (float)0.3, gridPosition.y + z);
                 GameObject highlight = Instantiate(highlightPrefab, highlightGridPosition, Quaternion.identity);
                 currentHighlights.Add(highlight);
+                lastHighlightPosition = highlightGridPosition;
             }
         }
         
@@ -133,6 +135,7 @@ public class PlayerPickUpDrop : MonoBehaviour
         }
         else
         {
+            objectGrabbable.transform.position = lastHighlightPosition;
             objectGrabbable.Drop();
             objectGrabbable = null;
         }
