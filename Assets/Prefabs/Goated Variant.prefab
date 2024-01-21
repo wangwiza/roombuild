@@ -1,0 +1,83 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &7828398121623104950
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3567267999273858975, guid: bdc2e6e31d29ac84091c4900507a5cdc, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5126857360524914850, guid: bdc2e6e31d29ac84091c4900507a5cdc, type: 3}
+      propertyPath: m_ActionEvents.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5126857360524914850, guid: bdc2e6e31d29ac84091c4900507a5cdc, type: 3}
+      propertyPath: m_ActionEvents.Array.data[2].m_ActionId
+      value: 25e0501c-8f5d-46e5-a59a-2979bf29bdde
+      objectReference: {fileID: 0}
+    - target: {fileID: 5126857360524914850, guid: bdc2e6e31d29ac84091c4900507a5cdc, type: 3}
+      propertyPath: m_ActionEvents.Array.data[3].m_ActionId
+      value: 97afbcb3-1103-448a-9a0e-3eda76c67cf2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5126857360524914850, guid: bdc2e6e31d29ac84091c4900507a5cdc, type: 3}
+      propertyPath: m_ActionEvents.Array.data[2].m_ActionName
+      value: PlayerMovement/RotateLeft[/DualSenseGamepadHID/leftTrigger]
+      objectReference: {fileID: 0}
+    - target: {fileID: 5126857360524914850, guid: bdc2e6e31d29ac84091c4900507a5cdc, type: 3}
+      propertyPath: m_ActionEvents.Array.data[3].m_ActionName
+      value: PlayerMovement/RotateRight[/DualSenseGamepadHID/rightTrigger]
+      objectReference: {fileID: 0}
+    - target: {fileID: 6616997855027958997, guid: bdc2e6e31d29ac84091c4900507a5cdc, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.724144
+      objectReference: {fileID: 0}
+    - target: {fileID: 6616997855027958997, guid: bdc2e6e31d29ac84091c4900507a5cdc, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.97
+      objectReference: {fileID: 0}
+    - target: {fileID: 6616997855027958997, guid: bdc2e6e31d29ac84091c4900507a5cdc, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -4.62
+      objectReference: {fileID: 0}
+    - target: {fileID: 6616997855027958997, guid: bdc2e6e31d29ac84091c4900507a5cdc, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6616997855027958997, guid: bdc2e6e31d29ac84091c4900507a5cdc, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6616997855027958997, guid: bdc2e6e31d29ac84091c4900507a5cdc, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6616997855027958997, guid: bdc2e6e31d29ac84091c4900507a5cdc, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6616997855027958997, guid: bdc2e6e31d29ac84091c4900507a5cdc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6616997855027958997, guid: bdc2e6e31d29ac84091c4900507a5cdc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6616997855027958997, guid: bdc2e6e31d29ac84091c4900507a5cdc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8080128649052306262, guid: bdc2e6e31d29ac84091c4900507a5cdc, type: 3}
+      propertyPath: m_Name
+      value: Goated Variant
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: bdc2e6e31d29ac84091c4900507a5cdc, type: 3}
