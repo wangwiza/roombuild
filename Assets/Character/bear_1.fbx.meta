@@ -33,7 +33,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: idle
+      name: idle1
       takeName: metarig|metarigAction.001
       internalID: -2463781497245029270
       firstFrame: 0
@@ -62,7 +62,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: pickup
+      name: pickup1
       takeName: metarig|metarigAction.001
       internalID: 2270989432139578439
       firstFrame: 80
@@ -91,7 +91,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: hold_walk
+      name: hold_walk1
       takeName: metarig|metarigAction.001
       internalID: 136262619285018508
       firstFrame: 160
@@ -120,7 +120,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: walk
+      name: walk1
       takeName: metarig|metarigAction.001
       internalID: 143299371203285260
       firstFrame: 240
@@ -149,7 +149,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: hold_idle
+      name: hold_idle1
       takeName: metarig|metarigAction.001
       internalID: 653114312434093796
       firstFrame: 320

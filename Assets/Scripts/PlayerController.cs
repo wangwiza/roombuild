@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour
     private float gravityValue = -9.81f;
     [SerializeField]
     private AudioSource walkSource;
+    public Animator animator;
+
     private CharacterController controller;
     private Vector3 playerVelocity;
     private bool groundedPlayer;
@@ -19,7 +21,7 @@ public class PlayerController : MonoBehaviour
     const float ControlSnappiness = 15f;
 
     private void Start()
-    {
+    {   
         controller = gameObject.GetComponent<CharacterController>();
         animator = gameObject.GetComponentInChildren<Animator>();
     }
@@ -35,6 +37,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        Debug.Log(animator.GetBool("isWalking"));
         groundedPlayer = controller.isGrounded;
         if (groundedPlayer && playerVelocity.y < 0)
         {

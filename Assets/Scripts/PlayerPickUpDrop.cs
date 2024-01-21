@@ -21,6 +21,10 @@ public class PlayerPickUpDrop : MonoBehaviour
     [SerializeField] private Grid grid;
     private Vector3 lastHighlightPosition;
 
+    [SerializeField]
+    public Animator animator;
+
+    private GridData floorData;
     private Renderer previewRenderer;
 
     [SerializeField] private GridManager database;
@@ -168,6 +172,8 @@ public class PlayerPickUpDrop : MonoBehaviour
             /*bool placementValidity = CheckPlacementValidity(lastHighlightPosition);
             if (!placementValidity)
                 return;*/
+            animator.SetBool("isHolding", false);
+
             objectGrabbable.transform.position = lastHighlightPosition;
             database.AddOrUpdateObject(objectGrabbable.GetId(), positions);
             foreach (GridObject gridObject in database.gridObjects)
